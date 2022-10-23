@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>투두 리스트</h2>
+  <div id="button">
+    <button type="button"onclick="record()" >할일추가</button>
+  </div>
+  <script>
+   
+    function changeStyle() {
+      document.getElementById("p1").style.color = "red";
+      document.getElementById("p1").style.fontFamily = "Century Schoolbook";
+      document.getElementById("p1").style.fontStyle = "italic";
+    }
+    function remove(){
+      let x = document.createElement("button");
+      x.setAttribute("type","button");
+      document.getElementById('button').appendChild(x);
+    }
+    function record(){
+      let result = prompt('할일기록 : ');
+      let newP = document.createElement('p');
+      let x = document.createElement("input");
+      x.setAttribute("type","checkbox");
+      let txtNode = document.createTextNode(result);
+      newP.appendChild(txtNode);       
+      //document.getElementById('button').appendChild(x);
+      let a = document.getElementById('button').appendChild(newP);
+    
+    }
+  </script>
+  
+</body>
+</html>

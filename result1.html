@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .backG{
+      background-color: aqua;
+    }
+    .backG2{
+      background-color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <button type="button" onclick="backG()">배경색 변경</button>
+  <button type="button" onclick="backG2()">배경색 변경</button>
+  <script>
+    function backG() {
+      let back = document.getElementsByTagName('body')[0];
+      
+      let b1cl = back.classList;
+      b1cl.toggle('backG');
+     
+    }
+    function backG2() {
+      let back = document.getElementsByTagName('body')[0];
+      let b1cl = back.classList;
+      b1cl.toggle('backG2');
+      
+    }
+  </script>
+</body>
+
+</html>

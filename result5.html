@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button type="button" onclick="enterGrades()">성적입력</button>
+  <button type="button" onclick="gradeInquiry()">성적조회</button>
+  <script>
+    let studentList={};
+    function Student(studentName, kor,eng,math){
+      this.studentName = studentName;
+      this.kor = kor;
+      this.eng = eng;
+      this.math = math;
+      this.sum = function(){
+        return (this.kor + this.eng + this.math);
+      }
+      this.avg = function(){
+        return (this.sum()/3);
+      }
+    }
+    
+    function enterGrades(){
+      let studentName = prompt('학생이름 : ');
+      if(studentName in studentList){
+        alert('이미 있는 학생입니다.')
+      }else{
+        let kor = parseInt(prompt('국어점수 : '));
+        let eng = parseInt(prompt('영어점수 : '));
+        let math = parseInt(prompt('수학점수 : '));
+        studentList[studentName] = new Student(studentName,kor,eng,math);
+        alert('입력이 완료되었습니다');
+      }
+    }
+    function gradeInquiry(){
+      let studentName = prompt('학생이름 : ');
+      if(studentName in studentList){
+        alert('국어점수 : '+studentList[studentName].kor+"\n"+
+        '영어점수 : '+studentList[studentName].eng+"\n"+
+        '수학점수 : '+studentList[studentName].math+"\n"+
+        '총점 : '+studentList[studentName].sum()+"\n"+
+        '평균 : '+studentList[studentName].avg());
+      }else{
+        alert('없는 이름입니다');
+      }
+    }
+  </script>
+</body>
+</html>

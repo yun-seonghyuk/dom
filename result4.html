@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button type="button" onclick="join()">회원가입</button>
+  <button type="button" onclick="login()">로그인</button>
+  <script>
+    let memberList={};
+    function Member(id,pw,name){
+      this.id = id;
+      this.pw = pw;
+      this.name = name;
+    }
+    function join(){
+      let id = prompt('아이디 입력 : ');
+      if(id in memberList){
+        alert('해당 아이디가 이미 존재합니다.');
+      }else{
+        let pw = prompt('비밀번호 입력 : ');
+        let name = prompt('이름 입력 : ');
+        memberList[id] = new Member(id,pw,name);
+        alert('회원가입을 축하합니다.') 
+      }
+    }
+    function login(){
+      let id = prompt('아이디 입력 : ');
+      let pw = prompt('비밀번호 입력 : ');
+      if(id in memberList && memberList[id].pw == pw){
+        alert(memberList[id].name+'님 환영합니다.');
+      }else{
+        alert('아이디와 비밀번호가 맞지 않습니다.')
+      }
+    }
+  </script>
+</body>
+</html>
