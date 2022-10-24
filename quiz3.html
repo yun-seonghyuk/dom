@@ -17,25 +17,26 @@
     let w2;
     let a;
     let c;
-    function openWindow2(){
+    function openWindow2(){ // 새창 열기
       w2 = window.open('','','width = 200px, height=200px'); 
     }
-    function openWindow(){
+    function openWindow(){ // 새창 반복열기
      a = window.setInterval(function(){
       w = window.open('','','width = 200px, height=200px');
       },2000,closeWindow());
       
     }
-    function closeInterval(){
+    function closeInterval(){// 인터벌 끄기
             window.clearInterval(a);
         }
-    function closeWindow(){
+        
+    function closeWindow(){// 2초후 창닫기
       c = window.setInterval(function(){ w.close();},2000);  
     }
     
     let count = 0;
     
-    function resizeWindow(){
+    function resizeWindow(){ // 새창 크기변동
       count ++;
       w.resizeBy(100*count,100*count);
       if(count == 4){
@@ -44,8 +45,10 @@
       } 
       console.log(count); 
     }
+
+
     let result = 0;
-    function moveWindow(){
+    function moveWindow(){ // 새창이동
       result++;
       if(result == 1){
         w.moveBy(-100,0);
