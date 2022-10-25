@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>세번째 페이지</h1>
+    <a href="./ex12_4.html">다음 페이지</a>
+    <button type="button" onclick="backpage()">뒤로 가기</button>
+    <button type="button" onclick="nextpage()">앞으로 가기</button>
+    <button type="button" onclick="dBackpage()">전전 페이지 가기</button>
+    <script>
+        function backpage(){
+            history.back();
+        }
+        function nextpage(){
+            history.forward();
+        }
+        function dBackpage(){
+            history.go(-2);
+        }
+    </script>
+</body>
+</html>

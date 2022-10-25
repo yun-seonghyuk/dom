@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button type="button" onclick="createAccount()">계좌 등록</button>
+    <button type="button" onclick="checkBalance()">예금 조회</button>
+    <button type="button" onclick="deposit()">예금 입금</button>
+    <button type="button" onclick="withdraw()">예금 출금</button>
+    <script>
+        let accList = {}; //다수 계좌를 등록할 객체;
+
+        function Account(name, balance){ //한명의 계좌 정보를 등록할 생성자
+            this.name = name;
+            this.balance = balance;
+        }
+        function createAccount(){
+            let accNum = prompt('계좌번호를 입력하세요.');
+            if(accNum in accList){
+                alert('해당 계좌번호는 이미 존재합니다.');
+            }else{
+                let name = prompt('예금주 이름을 입력하세요.');
+                let balance = Number(prompt('초기 입금액을 입력하세요.'));
+
+                accList[accNum]=new Account(name,balance);
+            }
+        }
+        function checkBalance(){
+            let accNum = prompt('계좌번호를 입력하세요.');
+            if(accNum in accList){
+                alert(accList[accNum].name+'님 잔액은 '+accList[accNum].balance+'원 입니다.');
+            }else{
+                alert('해당 계좌번호는 존재하지 않습니다.');
+            }
+        } 
+
+        function deposit(){
+            let accNum = prompt('계좌번호를 입력하세요.');
+            if(accNum in accList){
+                let money = Number(prompt('입금할 금액을 입력하세요.'));
+                accList[accNum].balance+=money;
+                alert('정상 입금이 진행되었습니다.\n'+accList[accNum].name+'님 잔액은 '+accList[accNum].balance+'원 입니다.');
+            }else{
+                alert('해당 계좌번호는 존재하지 않습니다.');
+            }
+        }
+
+        Account.prototype.withdraw = function(money){
+            if(this.balance < money){
+                return -99999;
+            }else{
+                this.balance-=money;
+                return this.balance;
+            }
+        }
+
+        function withdraw(){
+            let accNum = prompt('계좌번호를 입력하세요.');
+            if(accNum in accList){
+                let money = Number(prompt('출금할 금액을 입력하세요.'));
+                let result = accList[accNum].withdraw(money);
+                if(result == -99999){
+                    alert('잔액이 부족합니다.');
+                }else{
+                    alert('정상 출금이 진행되었습니다.\n'+accList[accNum].name+'님 잔액은 '+accList[accNum].balance+'원 입니다.');
+                }
+
+            }else{
+                alert('해당 계좌번호는 존재하지 않습니다.');
+            }
+        }
+    </script>
+</body>
+</html>

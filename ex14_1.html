@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#" id="frm1">
+        이름 : <input type="text" name="username" id="username"><br>
+        취미 : <br>
+        <input type="checkbox" name="hobby" id="movie" value="movie">영화감상<br>
+        <input type="checkbox" name="hobby" id="game" value="game">게임<br>
+        <input type="checkbox" name="hobby" id="fishing" value="fishing">낚시<br>
+        성별 : <br>
+        <input type="radio" name="gender" id="male" value="male">남
+        <input type="radio" name="gender" id="female" value="female">여<br>
+        직업 : <br>
+        <select name="job" id="job">
+            <option value="front">프론트엔드 개발자</option>
+            <option value="back">백엔드 개발자</option>
+            <option value="full">풀스택 개발자</option>
+        </select><br>
+        하고싶은 말 : <br>
+        <textarea name="will" id="will" cols="30" rows="10"></textarea><br>
+        <button type="button" onclick="takeData()">데이터 읽어오기</button>
+        <button type="button" onclick="fillData()">데이터 채워넣기</button>
+    </form>
+    <script>
+        function fillData(){
+            let f = document.forms.frm1; // 폼태그 전체
+            f.username.value = '고길동';
+            f.game.checked = true;
+            f.male.checked = true;
+            f.job.selectedIndex = 1;
+            f.will.value='대한민국 만세!';
+        }
+        function takeData(){
+            let f = document.forms.frm1; // 폼태그 전체
+
+            let name = f.username.value;  // input.text의 값을 읽어온다.
+            console.log('이름 : '+name);
+
+            let hobby = [];        // checkbox는 checked속성(boolean)를 통해서 체크되었는가 확인
+            if(f.movie.checked){
+                hobby.push(f.movie.value);
+            }
+            if(f.game.checked){
+                hobby.push(f.game.value);
+            }
+            if(f.fishing.checked){
+                hobby.push(f.fishing.value);
+            }
+            console.log('취미 : '+hobby);
+
+            let gender;
+            if(f.male.checked){
+                gender = f.male.value;
+            }else if(f.female.checked){
+                gender = f.female.value;
+            }else{
+                gender = '가반음양';
+            }
+            console.log('성별 : '+gender);
+
+            let job = f.job.value;
+            console.log('직업 : '+job);
+
+            let will = f.will.value;
+            console.log('하고싶은말 : '+will);
+        }
+    </script>
+</body>
+</html>

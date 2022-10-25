@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div > p{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="h" >헬로우 월드!</h1>
+    <div>
+        <p><strong class="g">안녕</strong>하세요</p>
+        <p class="g">안녕히가세요</p>
+        <input type="text" name="userName">
+        <img src="./war.jpg" alt="전쟁" height="50px" width="50px">
+        <button type="button" onclick="changeImg()">평화!!</button>
+    </div>
+    <div>
+        <form action="#" name="frm">
+            이름 : <input type="text" name="name1" id="name2" value="고길동" ><br>
+            <button type="button" onclick="run()">버튼</button>
+        </form>
+    </div>
+
+    <script>
+        function changeImg(){
+           let a = document.getElementsByTagName('img')[0];
+           a.setAttribute('src','./dove.jpg');
+           a.setAttribute('alt','평화');
+        }
+        // [DOM]  document => HTML 태그 하나하나를 객체화 시켜서 제어하는 내용
+        
+        // 1) 노드를 자바스크립트로 읽어오는 작업
+        let a1 = document.getElementById('h');  // 태그의 id속성값을 이용해서 노드를 읽어오는 방법
+        let a2 = document.getElementsByTagName('p')[1]; // 태그의 이름을 이용해서 노드를 읽어오는 방법
+        let a3 = document.getElementsByName('userName')[0]; // 태그의  name속성값을 이용해서 노드를 읽어오는 방법
+        let a4 = document.getElementsByClassName('g')[0] //태그의 class 속성값을 이용해서 노드를 읽어오는 방법
+        let a5 = document.querySelector('선택자'); // CSS선택자가 가르키는 노드를 읽어오는 방법 
+
+        // 2) 노드를 읽어왔으면 제어(1) => 속성
+        // console.log(a1.id);
+        // a1.id = 'aa';  //name 속성의 값을 aa로 부여
+
+        //  => 속성 제어 메서드
+        let b1 = a1.getAttribute('id'); // 대상노드에서 id 속성값을 읽어오세요.
+        console.log(b1);
+        a1.hasAttribute('id');  // 대상노드에서 id속성이 있나 없나 판단 T/F
+        a1.setAttribute('class','b'); // 대상 노드에 class라는 속성을 부여하고 값을 b로 입력하세요.
+        a1.removeAttribute('id'); // 대상노드에서 id 속성을 제거하세요.
+
+        // 3) 노드를 읽어왔으면 제어(2) => 텍스트노드
+        let c =  '<strong>';
+        a2.innerHTML = '배가 '+c+'매우</strong> 고픕니다.';
+
+        a2.textContent = '배가 <strong>매우</strong> 고픕니다.';
+
+        // 4) 폼 요소를 가져오고 컨트롤하기(1)
+        let f1 = document.getElementsByName('frm')[0];
+
+        let f2 = document.forms.frm;
+     //   console.log(f2);
+        let f3 = document.forms.frm.name1;
+        console.log(f3);
+        function run(){ // input 태그에 저장된 값을 읽어온다.
+            let f4 = document.forms.frm.name2.value;
+            console.log(f4);
+        }
+
+        // 5) 새로운 노드를 추가
+        let g1 = document.createElement('p'); // p태그를 새롭게 만듭니다.
+
+        g1.setAttribute('id','t');
+        g1.innerHTML = '공부하느라 고생 많습니다.';
+
+        let d1 = document.getElementsByTagName('div')[1]; //끼워넣을 부모 노드를 가져온다.
+        //d1.appendChild(g1);  //가져온 부모노드에 막내자식 노드를 끼워넣는다.
+
+        let d2 = document.getElementsByTagName('img')[0];
+        // 내가 원하는 것은 img태그 위에 끼워 넣고 싶다.
+        // 새로만든 노드는 자식요소만 끼워 넣을 수 있다.
+
+        d2.parentElement.insertBefore(g1,d2);
+        //   부모노드    끼워넣기    (삽입할 노드,기존자식노드);
+
+        // [추가]  부모노드.removeChild(자식노드)  자식 노드를 화면에서 지워버린다.
+        // [추가]  부모노드.replace(새로운노드, 기존자식노드); 기존 자식노드를 새로운노드로 바꾼다.
+
+
+
+
+
+    </script>
+</body>
+</html>
