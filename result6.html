@@ -7,56 +7,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-<<<<<<< HEAD
+
     button {
       margin: 5px;
-=======
-    button{
-      margin: 10px;
->>>>>>> 1d7d56a (dcc)
     }
+    .line{
+      text-decoration: line-through;
+    }
+    
   </style>
 </head>
 
 <body>
-  <h2>투두 리스트</h2>
-<<<<<<< HEAD
-  <div id="button">
-    <button type="button" onclick="recordList()">할일추가</button>
-=======
+ 
 
-  <div id='button'>
-    <button type='button'onclick="record()" >할일추가</button>
->>>>>>> 1d7d56a (dcc)
+  <div id="button">
+    <h2>투두 리스트</h2>
+    <button type="button" onclick="recordList()">할일추가</button>
   </div>
  
   <script>
-<<<<<<< HEAD
-
-    function recordList() {
+    function recordList(){
       let result = prompt('할일기록 : ');
 
-=======
-   
-   
-    function record(){
->>>>>>> 1d7d56a (dcc)
       if (result == "" || result === null) {
         alert('할일을 입력해주세요.');
       }else {
         let item = document.createElement('div');
         let checkbox = document.createElement('input');
         let txtNode = document.createTextNode(result);
+        
         checkbox.type = 'checkbox';
         let deleteButton = document.createElement('button')
         deleteButton.textContent = "제거";
-
+        
+        
         item.appendChild(checkbox);
         item.appendChild(txtNode);
         item.appendChild(deleteButton);
-
-        let a = document.getElementById('button').appendChild(item);
-        let b = document.getElementsByTagName('input')[0];
+        
+        let a = document.querySelector('div').appendChild(item);
+       // let b = document.getElementsByTagName('input')[0];
 
         deleteButton.addEventListener('click', function () { // 제거
           if (this.parentNode) {
@@ -67,20 +58,13 @@
         })
 
         checkbox.addEventListener('click', function(){ // 선긋기
-          var div = this.parentElement;
-          let b = document.getElementsByTagName('input')[0];
-          console.log(b);
-          //div.style.textDecoration='none';
-           div.style.textDecoration='line-through';
+          let div = this.parentElement;
+          let bcl = div.classList;
+          bcl.toggle('line');
         })
 
       }
-<<<<<<< HEAD
-
-=======
->>>>>>> 1d7d56a (dcc)
     }
-
 
 
   </script>
