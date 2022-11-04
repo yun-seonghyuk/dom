@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  td{
+    border: 1px solid black;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+  }
+</style>
+<body>
+  <script>
+    let num = 1;
+    let nodeEvent = function(e){
+      e.target.textContent = num;
+      num++;
+    }
+    let body = document.body;
+    let table = document.createElement("table");
+
+    for(let i = 0; i < 5 ; i++){
+      let line = document.createElement("tr");
+      for(let j = 0; j < 5; j++){
+        let node = document.createElement("td");
+        node.addEventListener('click',nodeEvent);
+        line.append(node);
+      }
+      table.append(line);
+    }
+    body.append(table);
+  </script>
+</body>
+</html>

@@ -10,6 +10,9 @@
     button {
       margin: 5px;
     }
+    .line{
+      text-decoration: line-through;
+    }
   </style>
 </head>
 
@@ -19,13 +22,14 @@
     <button type="button" onclick="recordList()">할일추가</button>
   </div>
   <script>
-
+    
     function recordList() {
       let result = prompt('할일기록 : ');
 
       if (result == "" || result === null) {
         alert('할일을 입력해주세요.');
       }else {
+        
         let item = document.createElement('div');
         let checkbox = document.createElement('input');
         let txtNode = document.createTextNode(result);
@@ -45,25 +49,19 @@
             item.removeChild(txtNode);
             item.removeChild(checkbox);
             this.parentNode.removeChild(this);
+           
           }
         })
 
         checkbox.addEventListener('click', function(){ // 선긋기
-          var div = this.parentElement;
-          let b = document.getElementsByTagName('input')[0];
-          console.log(b);
-          //div.style.textDecoration='none';
-           div.style.textDecoration='line-through';
+          let div = this.parentElement;
+          let bcl = div.classList;
+          bcl.toggle('line');
         })
 
       }
 
     }
-
-
-
-  </script>
-
+</script>
 </body>
-
 </html>
