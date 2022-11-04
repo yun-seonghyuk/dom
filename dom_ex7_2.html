@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>영단어장 만들기 - feat.List</h1>
+  <button type="button" onclick="addWord()">단어 등록</button>
+  <button type="button" onclick="removeLastWord()">단어 삭제(마지막 단어)</button>
+  <button type="button" onclick="removeNumber()">단어 삭제(선택한 번호)</button>
+  <button type="button" onclick="removeEngWord()">단어 삭제(특정 단어)</button>
+  <ol id="wordList">
+    <li>water:물</li>
+    <li>coffe:커피</li>
+    <li>dog:개</li>
+  </ol>
+  <script>
+
+    function removeEngWord() {
+      // 아주 먼 힌트 : "water:물" => 여기에서 어떻게  water를 꺼낼 것인가?
+
+      let list = document.getElementsByTagName('li');
+      let flag = -1;
+      if (list.length <= 0) {
+        alert('삭제할 요소가 없습니다.');
+      } else {
+        let selectWord = prompt('삭제할 단어를 입력해주세요.');
+
+        for (let i = 0; i < list.length; i++) { // <li>영단어:한글뜻</li>
+          let engword = list[i].innerHTML.split(':')[0].trim();
+          if (engword == selectWord) {
+            list[i].remove();
+            flag = i;
+            break;
+          }
+        }
+
+        if(flag == -1){
+          alert('삭제할 단어가 없습니다.');
+        }
+      }
+    }
+    // let str = "a:b,c:d,e:f,g:h,i:j";
+    //    str.split(','); => ['a:b','c:d','e:f','g:h','i:j'];
+    //    str.split(':'); => ['a','b,c','d,e','f,g','h,i','j'];
+
+    function removeNumber() {
+      let list = document.getElementsByTagName('li');
+      if (list.length <= 0) {
+        alert('삭제할 요소가 없습니다.');
+      } else { // 삭제할 요소가 있는경우
+        let num = parseInt(prompt('삭제할 번호를 입력하세요.'));
+
+        if (num > list.length || num < 1) { // 적정 범위를 벗어난 숫자를 입력하는 경우
+          alert('번호를 잘못입력하셨습니다.')
+        } else {
+          list[num - 1].remove();
+        }
+      }
+      // 배열 0 1 2 3 4
+      // 화면 1 2 3 4 5 <- 선택
+    }
+
+    function removeLastWord() {
+      let list = document.getElementsByTagName('li');
+      //li 요소로 이루어진 노드객체의 배열형태
+
+      if (list.length <= 0) { // li요소 배열이 없는 경우
+        alert('삭제할 요소가 없습니다.')
+      } else {
+        list[list.length - 1].remove();
+      }
+    }
+    function addword() {
+      let engword = prompt('영단어를 입력하세요.');
+      let korword = prompt('한글 뜻을 입력하세요.');
+
+      let li = document.createElement('li'); // <li></li>
+      li.innerHTML = engword + ":" + korword; // <li>apple:사과</li>
+
+      let ol = document.getElementById('wordList');
+
+      ol.appendChild(li);
+    }
+  </script>
+</body>
+
+</html>

@@ -7,49 +7,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
+
     button {
       margin: 5px;
     }
     .line{
       text-decoration: line-through;
     }
+    
   </style>
 </head>
 
 <body>
-  <h2>투두 리스트</h2>
+ 
+
   <div id="button">
+    <h2>투두 리스트</h2>
     <button type="button" onclick="recordList()">할일추가</button>
   </div>
+ 
   <script>
-    
-    function recordList() {
+    function recordList(){
       let result = prompt('할일기록 : ');
 
       if (result == "" || result === null) {
         alert('할일을 입력해주세요.');
       }else {
-        
         let item = document.createElement('div');
         let checkbox = document.createElement('input');
         let txtNode = document.createTextNode(result);
+        
         checkbox.type = 'checkbox';
         let deleteButton = document.createElement('button')
         deleteButton.textContent = "제거";
-
+        
+        
         item.appendChild(checkbox);
         item.appendChild(txtNode);
         item.appendChild(deleteButton);
-
-        let a = document.getElementById('button').appendChild(item);
-        let b = document.getElementsByTagName('input')[0];
+        
+        let a = document.querySelector('div').appendChild(item);
+       // let b = document.getElementsByTagName('input')[0];
 
         deleteButton.addEventListener('click', function () { // 제거
           if (this.parentNode) {
             item.removeChild(txtNode);
             item.removeChild(checkbox);
             this.parentNode.removeChild(this);
-           
           }
         })
 
@@ -60,8 +64,11 @@
         })
 
       }
-
     }
-</script>
+
+
+  </script>
+
 </body>
+
 </html>

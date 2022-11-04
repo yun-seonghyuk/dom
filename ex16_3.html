@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="outter">
+        바깥 박스
+        <div id="inner1">내부 박스1</div>
+        <div id="inner2">내부 박스2</div>
+    </div>
+    <script>
+        window.onload = function(){
+            let outterBox = document.getElementById('outter');
+            let innerBox2 = document.getElementById('inner2');
+
+            outterBox.addEventListener('click',function(e){
+                console.log('외부박스 클릭 => 버블링');
+            },false);//false인 경우 버블링 단계에서 작동 => 기본값
+
+            outterBox.addEventListener('click',function(e){
+                console.log('외부박스 클릭 => 캡쳐링');
+            },true);// true인 경우 캡쳐링 단계에서 작동
+
+
+            innerBox2.addEventListener('click',function(e){
+                console.log('내부박스2 클릭');  //이벤트 타겟
+            },false);
+//----------------------------------------------------------------------------------------
+            let innerBox1 = document.getElementById('inner1');
+
+            innerBox1.addEventListener('click',function(e){
+                console.log('내부박스1 클릭');
+                //e.stopPropagation();// 이벤트 전파 차단 
+                // => 요소가 변경될 때 차단 (나올때 부모 이벤트 발생(버블링)을 차단한다.)
+                // => 이벤트 타겟에 붙은 여러 이벤트는 차단X
+
+                e.stopImmediatePropagation(); // 이벤트 전파 일시정지 
+                // => 이후에 발생할 모든 이벤트 정지!! (나올때 부모 이벤트 발생(버블링)을 차단한다.)
+                // => 이벤트 타겟에 붙은 여러 이벤트는 차단O
+
+            },false);
+
+        }
+    </script>
+</body>
+</html>

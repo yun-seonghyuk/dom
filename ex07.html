@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // [배열] : 
+        //    다수의 데이터를 하나의 변수에 '인덱스(0부터~)'로 관리하는 데이터
+        let a1 = [1,2,3];
+
+        console.log(a1[0]);  // 1
+        console.log(a1[2]);  // 3
+
+        let a2 = [1, ,3];
+        let a3 = [1,3.14,'hello',[4,5,6]]; // 배열 요소 각 타입에 상관없이 배열에 데이터 저장
+
+        // 배열 데이터 조회하기
+        console.log(a2[2]);       //3
+        console.log(a2[2]+a3[0]); //4
+        console.log(a3[3][1]);    //5
+
+        console.log('a2 :'+a2);
+        // 배열 데이터 끼워넣기
+        a2[3] = 7;
+        console.log('a2 :'+a2);
+        // 이미 사용중인 인덱스에 데이터를 끼워넣으면 덮어쓰기
+        a2[2] = 5;  
+        console.log('a2 :'+a2);
+        // 배열의 끝에 데이터 추가하기
+        a2.push(9);  // a2 배열의 끝에 9 데이터 추가
+        console.log('a2 :'+a2);
+
+        // 배열의 데이터 삭제
+        delete a2[3];
+        console.log('a2 :'+a2);
+
+        // 배열 + for~Each   // 1,,5,,9
+        for(k in a2){    //  => javascript에서의 foreach문은 배열의 인덱스 번호만 꺼내온다.
+            console.log('k : '+k); // 0,1,2,3
+        }
+
+        for(k in a2){
+            console.log(k+' : '+a2[k]);
+        }
+
+
+
+
+    </script>
+</body>
+</html>

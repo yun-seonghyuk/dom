@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    button{
+      margin: 5px 5px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h2>영단어장 만들기 - feat.List</h2>
+    <button type="button" onclick="wordCreat()">단어추가</button>
+    <button type="button" onclick="wordLastDelete()">단어삭제(마지막단어)</button>
+    <button type="button" onclick="wordNumDelete()">단어삭제(번호)</button>
+    <button type="button" onclick="wordDelete()">단어 삭제(특정 단어)</button>
+  </div>
+  
+    
+		<ol id="record">
+			
+		</ol>
+</body>
+<script>
+
+  function wordLastDelete(){
+    let list = document.getElementsByTagName('li');
+    //console.log(list.children[0]);
+    let last = list.length-1
+    list[last].remove();
+    
+  }
+  function wordCreat(){
+    let eng = prompt('영단어 입력 : ');
+    let kor = prompt('뜻 입력 : ');
+    const wordCreat = document.querySelector('#record');
+
+    let item = document.querySelector('#record');
+    let wordList = document.createElement('li');
+    wordList.textContent= eng+' : '+kor;
+    item.appendChild(wordList);
+    //let b = document.querySelector('#record').appendChild(item);
+   
+  }
+ 
+  
+</script>
+</html>
